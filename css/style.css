@@ -167,7 +167,7 @@ body[data-layout='article'] .header__brand_title,body[data-layout='article'] .he
 .main {
     align-content: baseline;
     display: grid;
-    min-height: 100vh;
+    min-height: 200vh;
     padding-top: 56px;
 }
 html:not(.js) .main,html.js-loading .main,html.js-loading.js .main{display:none;opacity:0;pointer-events:none;visibility:hidden}
