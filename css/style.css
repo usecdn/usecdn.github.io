@@ -42,11 +42,19 @@ html.dark,.dark{
     --c2:#258650;
     --c3:#19693d;
 }
-a,abbr,address,article,aside,audio,b,blockquote,button,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,i,iframe,img,ins,input,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,ul,var,video{-webkit-tap-highlight-color:transparent;border:0;font-family:-apple-system,BlinkMacSystemFont,'Roboto',sans-serif;margin:0;padding:0}
-html,body{-ms-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-moz-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;align-content:baseline;box-sizing:border-box;display:block;font-family:-apple-system,BlinkMacSystemFont,'Roboto',sans-serif;font-size:16px;font-weight:400;margin:0;padding:0;text-size-adjust:100%}
+*,*::before,*::after{-webkit-box-sizing:border-box;box-sizing:border-box}
+a,abbr,address,article,aside,audio,b,blockquote,body,button,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,hr,i,iframe,img,ins,input,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,ul,var,video{-webkit-tap-highlight-color:transparent;border:0;font-family:-apple-system,BlinkMacSystemFont,'Roboto',sans-serif;margin:0;padding:0}
+html,body{-ms-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-moz-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;box-sizing:border-box;display:block;font-family:-apple-system,BlinkMacSystemFont,'Roboto',sans-serif;font-size:16px;font-weight:400;margin:0;padding:0;text-size-adjust:100%}
 html{background:var(--bg)}
 body{overflow-y:auto;overflow-x:hidden}
-h1,h2,h3,h4,h5,h6{color:var(--t);margin:0;padding:0;text-overflow:ellipsis}
+article,aside,details,figcaption,figure,footer,header,main,nav,section,summary,hgroup{display:block}
+head,script,link,meta,title,style,[hidden],.hide{display:none}
+svg:not(:root){overflow:hidden}
+embed,object,video{max-width:100%}
+input[type='search']{-webkit-appearance:textfield}
+input[type='search']::-webkit-search-cancel-button,input[type='search']::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+h1,h2,h3,h4,h5,h6{color:var(--t);text-overflow:ellipsis}
 a:not([class]){color:var(--c2);text-decoration:none}
 a:not([class]):hover{color:var(--c3)}
 @media (min-width: 1025px){
@@ -98,23 +106,12 @@ button:focus{outline:thin dotted var(--bg-5)}
 .btn__action:focus>svg{fill:var(--t-3)}
 /* Launch */
 html:not(.js)>body,html.js-loading>body,html.js-loading.js>body{overflow:hidden}
-.launch{
-    align-content: center;
-    background: var(--bg);
-    bottom: 0;
-    display: grid;
-    justify-content: center;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 27
-}
+.launch{align-content:center;background:var(--bg);bottom:0;display:grid;justify-content:center;left:0;position:fixed;right:0;top:0;z-index:27}
 .launch>svg{display:inline-grid;fill:var(--t);height:36px;width:36px}
 html.js .launch{display:none}
 /* Error */
 body[error]{overflow:hidden}
-.error{align-content:center;display:grid;margin:0 auto;max-width:672px;padding:124px 16px;width:-webkit-fill-available;width:-moz-fill-available;width:fill-available}
+.error{align-content:center;display:grid;margin:0 auto;max-width:672px;padding:124px 16px;width:100%}
 .error__title{color:var(--t-3);font:400 16px/1.5 Gelasio,serif;text-transform:uppercase}
 .error__code{color:var(--t-2);font:500 180px/200px Gelasio,serif}
 .error__subtitle{color:var(--t-4);font:400 20px/1.5 Gelasio,serif}
