@@ -26,6 +26,7 @@
     <script>(function(b,a){"use-strict";"object"===typeof exports&&"undefined"!==typeof module?module.exports=a():"function"===typeof define&&define.amd?define(a):b.theme=a()})(this,function(){var b=document.documentElement,a=document.querySelector("*[name='theme-color']"),d=localStorage.getItem("theme"),e=sessionStorage.getItem("theme"),c=function(){b.classList.add("dark");a.setAttribute("content","#000000")};"dark"==d?c():"dark"==e?c():(b.classList.remove("dark"),a.setAttribute("content","#ffffff"),localStorage.removeItem("theme"),sessionStorage.removeItem("theme"))});</script>
 </head>
 <body data-layout='index'>
+    <a class='skip-to-content' href='#main'>Skip to main content</a>
     <header class='header'>
         <div class='header__column'>
             <div class='header__column_start'>
@@ -45,12 +46,17 @@
                         <li class='header__nav_item'><a class='header__nav_link' href='/'>Resources</a></li>
                     </ul>
                 </nav>
+                <form action='?' aria-hidden='true' class='header__search' method='get' role='search'>
+                    <label class='header__search_icon icon__before' data-icon='search' for='site-search'></label>
+                    <input aria-hidden='true' name='search' type='hidden' value='google'/>
+                    <input aria-label='Search' class='header__search_input' id='site-search' name='q' placeholder='Search' spellcheck='false' type='search'/>
+                </form>
             </div>
             <div class='header__column_end'>
-                <button aria-label='Search, button' class='btn__action tap__search'>
+                <button aria-label='Search, button' class='btn__action tap__search' type='button'>
                     <svg focusable='false' height='24' width='24' viewBox='0 0 24 24'><use xlink:href='#icon__search'></use></svg>
                 </button>
-                <button aria-label='Subscribe, button' class='btn__action tap__subscribe'>
+                <button aria-label='Subscribe, button' class='btn__action tap__subscribe' type='button'>
                     <svg focusable='false' height='24' width='24' viewBox='0 0 24 24'><use xlink:href='#icon__notifications'></use></svg>
                 </button>
             </div>
