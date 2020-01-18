@@ -21,7 +21,7 @@ p:not([class]){letter-spacing:-0.064px}
 em,i{font-family:inherit;font-style:italic;font-weight:400}
 strong,b{color:var(--t);font-family:inherit;font-style:normal;font-weight:500}
 a{text-decoration:none}
-a:not([class]){-webkit-transition:color .2s;color:var(--c-1);text-decoration:underline;transition:color .2s}
+a:not([class]){-webkit-transition:color .2s;color:var(--c-1);font-family:inherit;text-decoration:underline;transition:color .2s}
 a:not([class]):hover{color:var(--c-2)}
 a>strong,a>strong>em{color:inherit}
 mark{-webkit-transition:background .2s,color .2s;background:var(--c-3);color:var(--t-2);transition:background .2s,color .2s}
