@@ -4,8 +4,8 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>
     <meta name='theme-color' content='#ffffff'>
-    <title>Rizky Saskia Putra</title>
-    <link rel='canonical' href='/'/>
+    <title>Comments — Rizky Saskia Putra</title>
+    <link rel='canonical' href='./comments.html'/>
     <meta name='description' content='Think, Find, Make and Repeat.'/>
     <meta property='og:locale' content='en'/>
     <meta property='og:type' content='website'/>
@@ -25,7 +25,7 @@
     <link rel='stylesheet' href='./css/style.css'>
     <script>(function(b,a){"use-strict";"object"===typeof exports&&"undefined"!==typeof module?module.exports=a():"function"===typeof define&&define.amd?define(a):b.theme=a()})(this,function(){var b=document.documentElement,a=document.querySelector("*[name='theme-color']"),d=localStorage.getItem("theme"),e=sessionStorage.getItem("theme"),c=function(){b.classList.add("dark");a.setAttribute("content","#000000")};"dark"==d?c():"dark"==e?c():(b.classList.remove("dark"),a.setAttribute("content","#ffffff"),localStorage.removeItem("theme"),sessionStorage.removeItem("theme"))});</script>
 </head>
-<body data-layout='index'>
+<body data-layout='comments'>
     <a class='skip-to-content' href='#main'>Skip to main content</a>
     <header class='header'>
         <div class='header__column'>
@@ -63,9 +63,23 @@
         </div>
     </header>
     <main class='main' id='main' role='main'>
-        <a href='./410.html'>410</a>
-        <a href='./article.html'>Article</a>
-        <div data-page='index'></div>
+        <article class='comments' data-page='comments'>
+            <header class='comments__header'>
+                <span class='comments__title'>Showing discussion for:</span>
+                <h1 class='comments__article_title'><a class='link' href='./article.html?states=reload'>Insights from a Reluctant Leader</a></h1>
+                <p class='comments__article_subtitle'>Why our current definition of leadership doesn’t match the rallying cry for diversity, equity, and inclusion</p>
+            </header>
+            <section class='comments__body'>
+                <div class='comments__section'>
+                    <span class='comments__title'>Discussion</span>
+                </div>
+                <div class='comments__section' id='disqus-thread'>
+                    <div class='comments__loading'>
+                        <div class='comments__spinner'><div></div><div></div><div></div><div></div></div>
+                    </div>
+                </div>
+            </section>
+        </article>
     </main>
     <footer class='footer' role='contentinfo'></footer>
     <svg aria-hidden='true' display='none' height='0' width='0' xmlns='http://www.w3.org/2000/svg'>
