@@ -27,11 +27,11 @@ button{-webkit-appearance:button;-webkit-transition:outline .2s;align-items:cent
 button:hover{outline:thin dotted var(--bg-6)}
 button:focus{outline:thin dotted var(--bg-7)}
 h1,h2,h3,h4,h5,h6{color:var(--t);display:block;font-style:normal;text-overflow:ellipsis}
-h2{font:400 30px/1.33333 Gelasio,serif}
-h3{font:500 28px/1.33333 Gelasio,serif}
-h4{font:500 26px/1.36364 Gelasio,serif}
-h5{font:500 24px/1.36364 Gelasio,serif}
-h6{font:500 22px/1.36364 Gelasio,serif}
+h2{font:500 26px/1.15789 Gelasio,serif}
+h3{font:500 24px/1.33333 Gelasio,serif}
+h4{font:500 22px/1.33333 Gelasio,serif}
+h5{font:500 20px/1.33333 Gelasio,serif}
+h6{font:500 18px/1.33333 Gelasio,serif}
 p{color:var(--t-4);display:block;font-style:normal}
 em,i{font-family:inherit;font-style:italic;font-weight:400}
 strong,b{color:var(--t);font-family:inherit;font-style:normal;font-weight:500}
@@ -107,7 +107,6 @@ html:not(.js)>body,html.js-loading>body,html.js-loading.js>body{overflow:hidden}
 .launch>svg{display:inline-grid;fill:var(--t);fill-rule:evenodd;height:36px;width:36px}
 html.js .launch{display:none}
 /* Error */
-body[error]{overflow:hidden}
 .error{align-content:center;display:grid;margin:0 auto;max-width:672px;padding:124px 16px;width:100%}
 .error__title{color:var(--t-3);font:400 16px/1.5 Gelasio,serif;text-transform:uppercase}
 .error__code{color:var(--t-2);font:500 180px/200px Gelasio,serif}
