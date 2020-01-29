@@ -18,12 +18,12 @@
     <link rel='preconnect' href='https://www.gstatic.com' crossorigin='anonymous'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin='anonymous'>
     <link rel='preconnect' href='https://fonts.googleapis.com' crossorigin='anonymous'>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Gelasio:400,400i,500%7CRoboto:400,400i,500%7CMaterial+Icons&display=swap'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Gelasio:400,400i,500%7CRoboto:400%7CMaterial+Icons&display=swap'>
     <link rel='shortcut icon' href='./favicon.ico'>
     <link rel='apple-touch-icon' href='./img/apple-touch-icon.png'>
     <link rel='manifest' href='./manifest.json'>
     <link rel='stylesheet' href='./css/style.css'>
-    <script>(function(b,a){"use-strict";"object"===typeof exports&&"undefined"!==typeof module?module.exports=a():"function"===typeof define&&define.amd?define(a):b.theme=a()})(this,function(){var b=document.documentElement,a=document.querySelector("*[name='theme-color']"),d=localStorage.getItem("theme"),e=sessionStorage.getItem("theme"),c=function(){b.classList.add("dark");a.setAttribute("content","#000000")};"dark"==d?c():"dark"==e?c():(b.classList.remove("dark"),a.setAttribute("content","#ffffff"),localStorage.removeItem("theme"),sessionStorage.removeItem("theme"))});</script>
+    <script>(function(){function c(){document.documentElement.classList.add("dark");h.setAttribute("content","#000000");localStorage.setItem("theme","dark");sessionStorage.setItem("theme","dark")}function d(){document.documentElement.classList.remove("dark");h.setAttribute("content","#ffffff");localStorage.removeItem("theme");sessionStorage.removeItem("theme")}function e(){document.documentElement.classList.remove("js");document.documentElement.classList.add("js-loading")}var b=localStorage.getItem("theme"),l=sessionStorage.getItem("theme"),h=document.querySelector('meta[name="theme-color"]');try{switch(b){case "dark":c();break;default:d()}}catch(a){throw new SyntaxError("There was a problem reading local data");}try{switch(l){case "dark":c();break;default:d()}}catch(a){throw new SyntaxError("There was a problem reading session data");}b=function(a){for(var f=window.location.search.substring(1).split("&"),g=0;g<f.length;g++){var k=f[g].split("=");if(k[0]==a)return k[1]}return!1}("theme");"dark"===b&&setTimeout(function(){return c()},0);"light"===b&&setTimeout(function(){return d()},0);window.parent.frames[0]!=window.self&&e();document.addEventListener("readystatechange",function(a){try{"interactive"===a.target.readyState?e():"complete"===a.target.readyState&&(document.documentElement.classList.add("js"),document.documentElement.classList.remove("js-loading"))}catch(f){throw new SyntaxError("The page not be loaded");}});window.addEventListener("beforeunload",e)})();</script>
 </head>
 <body data-layout='index'>
     <a class='skip-to-content' href='#main'>Skip to main content</a>
@@ -39,6 +39,8 @@
     </svg>
     <div aria-hidden='true' class='launch'><svg aria-label='Rizky Saskia Putra' focusable='false' height='36' role='img' width='36' viewBox='0 0 24 24'><use xlink:href='#logo'></use></svg></div>
     <div aria-hidden='true' aria-valuemin='0' aria-valuemax='100' class='progress' role='progressbar'></div>
+    <div aria-hidden='true' class='ui__mask'></div>
+    <div aria-hidden='true' class='ui__bg'></div>
     <header class='header'>
         <div class='header__column'>
             <div class='header__column_start'>
@@ -79,6 +81,8 @@
             <li><a href='./410.html'>410</a></li>
             <li><a href='./article.html'>Insights from a Reluctant Leader</a></li>
             <li><a href='./how.html'>How Human Interaction is Shaping the Future of Technology</a></li>
+            <li><a href='?theme=dark'><span>Dark</span></a></li>
+            <li><a href='?theme=light'><span>Light</span></a></li>
         </ol>
         <div data-page='index'></div>
     </main>
@@ -86,21 +90,29 @@
         <div class='footer__column'>
             <div class='footer__column_start'>
                 <a class='footer__brand' href='/'>Rizky Saskia Putra</a>
+                <p class='footer__brand_description'>Think, Find, Make and Repeat.</p>
+                <p class='footer__brand_location'>— from Kediri, Indonesia.</p>
             </div>
             <div class='footer__column_end'>
                 <nav aria-label='Site' class='footer__nav'>
-                    <ul class='footer__nav_list'>
-                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>Privacy</a></li>
-                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>Terms</a></li>
+                    <ul aria-label='Rizky Saskia Putra' class='footer__nav_list'>
                         <li class='footer__nav_item'><a class='footer__nav_link' href='/'>About</a></li>
-                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>Products</a></li>
+                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>Showcase</a></li>
+                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>What's New</a></li>
+                    </ul>
+                    <ul aria-label='Social' class='footer__nav_list'>
+                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>CodePen</a></li>
+                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>GitHub</a></li>
+                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>Twitter</a></li>
+                    </ul>
+                    <ul aria-label='Other' class='footer__nav_list'>
+                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>Terms</a></li>
+                        <li class='footer__nav_item'><a class='footer__nav_link' href='/'>Privacy</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </footer>
-    <div class='ui__mask'></div>
-    <div class='ui__bg'></div>
     <script defer src='./js/component.js'></script>
     <script defer src='./js/main.js'></script>
 </body>
