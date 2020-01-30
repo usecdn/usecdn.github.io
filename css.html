@@ -4,8 +4,8 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>
     <meta name='theme-color' content='#ffffff'>
-    <title>How Human Interaction is Shaping the Future of Technology — Rizky Saskia Putra</title>
-    <link rel='canonical' href='./how.html'/>
+    <title>CSS Architecture for Modern JavaScript Applications — Rizky Saskia Putra</title>
+    <link rel='canonical' href='./css.html'/>
     <meta name='description' content='Think, Find, Make and Repeat.'/>
     <meta property='og:locale' content='en'/>
     <meta property='og:type' content='website'/>
@@ -79,14 +79,15 @@
     <main class='main' id='main' role='main'>
         <article class='article' data-page='article'>
             <header class='article__header'>
-                <h1 class='article__title' id='article__title'>How Human Interaction is Shaping the Future of Technology</h1>
+                <h1 class='article__title' id='article__title'>CSS Architecture for Modern JavaScript Applications</h1>
+                <p class='article__subtitle'>My attempt to modernise some learnings from CSS architecture and apply them in the context of modern JavaScript applications.</p>
                 <div class='article__meta'>
                     <div class='article__posted'>
                         <div class='article__posted_image'>
                             <amp-img alt='Margaret Lee' data-src='./img/rsp-me.jpg' height='48' layout='responsive' src='./img/me.jpg' width='48'><noscript><img alt='Margaret Lee' data-src='./img/rsp-me.jpg' height='48' layout='responsive' src='./img/me.jpg' width='48'/></noscript></amp-img>
                         </div>
                         <div class='article__posted_info'>
-                            <a class='article__posted_author' href='/'>Hector Ouilhet</a>
+                            <a class='article__posted_author' href='/'>Mike</a>
                             <time class='article__posted_date' datetime='2019-02-20T05:43:37+0000'>Feb 20, 2019</time>
                         </div>
                     </div>
@@ -99,42 +100,96 @@
             </header>
             <div aria-labelledby='article__title' class='article__body' role='region'>
                 <div class='article__section'>
-                    <p>As a species, we humans have been talking to each other for a long time. It’s only very recently that we’ve started to talk to machines. In fact, if you think of human speech as having been around for 1 day, then talking computers have been around for just 1 millisecond. This recent development might sound like a flash in the pan, but it actually attests to the endurance of conversation as humanity’s preferred means of communication. 🔥</p>
-                    <p>As a human-centric designer, my goal has always been to help people interact with new technologies by making them more intuitive and approachable. When I took on the role of head of design for Google Search & Assistant, I had an opportunity to realize my life’s goal and teach this nascent technology to interact with us in ways that are similar to how we interact with each other. The time I spent working on the Google Assistant has only strengthened my conviction that conversation, the most enduring form of human interaction, should be the design paradigm for future digital products and services. 💬</p>
+                    <p>I went to a JavaScript meet-up in Sydney the other night and asked the question "How many people know what CSS Architecture is?". The room was full of different people with varying backgrounds and experience. I thought at minimum around a quarter might know what I was talking about. I was hoping more would. To my surprise, only a handful of people raised their hand.</p>
+                    <p>I then asked, "How many people feel the difficulties they have writing CSS at scale have been largely solved by CSS-in-JS?". They weren't stupid, they knew this question was a set-up, nonetheless, many of them obliged me and put their hand up.</p>
+                    <p>From the looks in the room, I think many more people felt this way than were willing to admit. At the very least, I think a lot of people believe CSS architecture is no longer relevant in the context of modern JavaScript applications.</p>
+                    <p>That perspective was very kindly put to me by Alex Louden on Twitter:</p>
+                    <blockquote>
+                        <p>"Styled Components etc has removed the need for class names completely for me. Now since styles are included in my presentation components (to me at least) it doesn’t feel like a style architecture issue any more?"</p>
+                    </blockquote>
+                    <p>This is not to criticise that perspective; it's completely valid! Alex is saying tooling helped make some of the challenges he had dealing with CSS (in particular specificity) easier. The challenge now is dealing with components in an application.</p>
+                    <p>I understand this perspective, but find it interesting when people see classnames and components as completely different concerns. Classnames and components are just different ways of composing user interfaces. There are still many challenges involved in making good re-useable and scalable front-end systems, no matter how you put them together.</p>
+                    <p>These challenges are not new. In fact, there are some well established solutions in CSS architecture that can be easily transferred to component-based style systems. So why are so few people talking about this? And why are many more people completely unaware of the topic?</p>
+                    <p>I believe there is a lot that has contributed to this and it's worth reflecting on how we got here...</p>
                 </div>
                 <div aria-hidden='true' class='toc'></div>
-                <section aria-labelledby='awkward' class='article__section'>
-                    <h2 class='mb copy' id='awkward'>Awkward exchanges with technology</h2>
-                    <p>A conversation is essentially just a series of back-and-forth exchanges: one person speaks while the other listens, and vice versa. We process the input from this exchange — be it new information, changes in mood, or even body language — by contextualizing them within the framework of our existing knowledge about the topic and speaker. And in doing so we continuously refine both our understanding of the topic and the other speaker. This doesn’t just allow us to move the conversation forward, but it helps us to anticipate what the other person might say. And we do all of this, for the most part, spontaneously. 👯‍♂️</p>
-                    <figure>
-                        <amp-img alt='Awkward exchanges with technology' data-src='./img/rsp-boathouse.png' height='600' layout='responsive' src='./img/boathouse.png' width='800'><noscript><img alt='Awkward exchanges with technology' height='600' loading='lazy' src='./img/boathouse.png' width='800'/></noscript></amp-img>
-                    </figure>
-                    <p>Now contrast this type of exchange with the recent exchanges you’ve had with technological interfaces. Not so dynamic and fluid, right? This is because most interfaces behave in largely predetermined ways; machines just don’t learn about and adapt to us in the same way we do with them. But please, don’t blame the machines. We humans have become so used to accommodating technology — that is, learning to speak its language and working within its constraints — that we’ve stopped wondering how the world might look if our technology could carry on a conversation. 🤓</p>
+                <section aria-labelledby='how_we_got_here' class='article__section'>
+                    <h2 class='mb copy' id='how_we_got_here'>How we got here</h2>
+                    <p>I believe the initial response to CSS-in-JS, from many leaders in the CSS community hasn't helped with understanding and knowledge sharing. I've often heard comments like "People (i.e. younger JavaScript developers) just need to learn CSS better." People who have knowledge about CSS architecture need to do a better job of articulating this experience in a way that is accessible and relevant to new developers. If I'm honest about it, the CSS community has failed at this.</p>
+                    <p>But it's not that simple. There are some non-human factors and context we need to consider as well.</p>
+                    <p>Before the rise of JavaScript components. The strong and obvious naming conventions of BEM gave developers a system to follow that helped avoid specificity clashes in the "terrifying global scope" of CSS. This alone was reason enough for many people to use BEM. You could get good enough results, without necessarily understanding nuanced reasons behind the conventions.</p>
+                    <p>When JavaScript tooling provided a better solution than humans following naming conventions, it opened up UI development to a wider spectrum of developers who previously had less interest in, or reason to focus on, style architecture.</p>
+                    <p>Business jumped on the dogpile. They reasoned it would be cheaper to employ developers who could "do everything" and got what they considered to be adequate results by under-investing in UI specialists. Some developers who'd spent half a career perfecting skills in this area felt threatened. Perhaps some were defensive.</p>
+                    <p>At the same time, developers working in spaces of growth and opportunity could sometimes be dismissive of skills that were not flavour of the month. There was pride, and hype, and reluctance to admit that new tooling and approaches were not always producing better, more re-useable, front-end architecture.</p>
+                    <p>I've been consulting in this space for the last 5 years and I've seen many different systems for building UIs with component-based architecture. The reality is, whilst some aspects of building large scale JavaScript applications are easier, the promise of better, more re-usable UI components hasn't been delivered. Front-end architecture is more varied in approach and the results less re-useable than it was before the rise of JavaScript tooling.</p>
+                    <p>Some people might challenge this, but I've seen enough examples to consider it an objective truth. What I have seen is:</p>
+                    <div class='mt'>
+                        <ul>
+                            <li>almost every team has a different approach,</li>
+                            <li>90% of components get zero re-use,</li>
+                            <li>visual changes are often difficult, slow and expensive,</li>
+                            <li>it's harder <strong>than ever</strong> to read and understand styles.</li>
+                        </ul>
+                    </div>
+                    <p>Somewhere in the turbulence, we lost the more nuanced reasons behind the naming conventions.</p>
+                    <p>The aim of this was to give context, not blame (it's a little bit of everybody's fault). So let's draw a line, and look at how to apply some lessons from CSS architecture to modern JavaScript applications.</p>
                 </section>
-                <section aria-labelledby='your_printer' class='article__section'>
-                    <h2 class='mb copy' id='your_printer'>What would your printer say if it could talk?</h2>
-                    <p>Imagine, for a second, you relied on a standard office printer to print out weekly reports. Nowadays, even your run-of-the-mill printer has countless fancy features. And yet, come Friday, you shuffle over to the printer and push, by sheer force of habit, the same buttons in the same sequence to get the same result. Naturally, your report is never formatted exactly how you wanted (perhaps the margins are too narrow or the images are too dark), so you just accept the result because it would be too time-consuming to figure out how to get the thing to do exactly what you want it to. Nobody likes doing this type of tedious work, which is why it usually got passed off on me back when I was an intern: “<em>Hey Hector, can you print this out for me, same as last week but just skip the images?</em>” I couldn’t delegate this to somebody else, because the only thing lower in the hierarchy than me was, well, the printer. 🖨</p>
-                    <p>But imagine how enjoyable my internship would’ve been if I could’ve talked to my printer. Nowadays, some <a href='/'>smart printers</a> can already handle basic voice commands, eliminating some of the inefficient button pushing. But what if these smart printers could take it a step further and carry on a context-sensitive conversation that accounts for changing needs? It might, for instance, make helpful suggestions like, “<em>It looks like you’re just printing a quick draft, so should I make it black and white to save some ink?</em>” This would make it more than just a useful tool, but an assistive agent. 💥</p>
+                <section aria-labelledby='css_architecture_for_components' class='article__section'>
+                    <h2 class='mb copy' id='css_architecture_for_components'>CSS Architecture for Components</h2>
+                    <p>First of all, we need to consider what makes sensible abstractions in UI development. OOCSS, SMACSS and BEM all have a common language when they talk about the different parts of a UI component. I can summarise these as:</p>
+                    <div class='mt'>
+                        <ul>
+                            <li>Layout,</li>
+                            <li>Design,</li>
+                            <li>UI states, and</li>
+                            <li>Application logic</li>
+                        </ul>
+                    </div>
+                    <p>If re-use or long-term maintainability is important, keeping these concerns separate is beneficial. Yet, this is not typically how teams approach the design of a component library.</p>
+                    <p>Components can do many things, they might fetch data, they might render HTML, they might call functions to execute business logic and manage application state. Sometimes a single component does all these things. There is usually little distinction around what the responsibility of a component should be. People draw boxes around the visual boundaries of a design and then mix this with application logic. That's how most components are built. We can do better than that.</p>
+                    <p>BEM gave semantic meaning to classnames and one of the biggest unseen values in this was we could immediately transfer our intentions to other developers across teams and even projects. If you know BEM you can look at a classname, e.g. <code>button--state-success</code> and immediately recognise this as a modifier for a button class.</p>
+                    <p>This kind of semantic meaning is sorely needed for components.</p>
+                    <p>With that in mind, let's look at different parts of a UI component, identified in CSS architecture methodologies and redefine them in terms of component architecture.</p>
                 </section>
-                <section aria-labelledby='learning' class='article__section'>
-                    <h2 class='mb copy' id='learning'>Learning to let go</h2>
-                    <p>A few years ago, my family and I were sitting in our living room and getting ready to watch the World Cup. I was fiddling around with my remote controller when my 3-year-old daughter, Ana Julia, turned to the Google Home and said, “<em>Play the Mexico game in the living room!</em>” The TV suddenly turned on and she just started watching. I was beaming with pride. I was so proud of my teams, both the one on the football field and the one at Google who made the experience possible. But most of all, I was proud of my little girl who, in the most matter of fact way, asked this piece of technology to do something in the same way she would’ve asked her father to. ⚽️</p>
-                    <p>But then at the halftime break, she asked the Google Assistant to do something she knows I’d never do: “<em>Play ‘Let it Go’ three times!</em>” I was tempted to tell her it’s not going to work, because I knew how difficult it was to fulfill a multi-intent command. But to my amazement (and perhaps momentary annoyance), our Google Home actually played the song, three times in a row.</p>
-                    <figure>
-                        <amp-img alt='Learning to let go' data-src='./img/rsp-road-trip.png' height='600' layout='responsive' src='./img/road-trip.png' width='800'><noscript><img alt='Learning to let go' height='600' loading='lazy' src='./img/road-trip.png' width='800'/></noscript></amp-img>
-                    </figure>
-                    <p>While the chorus blasted in the background (“<em>let it go, let it go, let it gooooo!</em>”), I couldn’t help but reflect on letting go. My team and I didn’t explicitly design or hardcode this feature; instead, we designed higher-order models that could parse different things people might ask for and fulfill them in one flow. In other words, we taught the Google Assistant the basic principles of conversation and trusted it to generalize for new and unexpected use cases. Obviously my daughter doesn’t understand how the technology works, but what she does understand is that she can use her voice to get technology to do things for her. 🙎🏽‍♀️</p>
-                    <p>And we shouldn’t take this for granted. Our whole lives we’ve been using the most unnatural interfaces — from push-button telephones to computer mouses — to operate our technology. These machine-centric interaction models are now so deeply ingrained in us that, like me clutching my remote controller, it’s easy to forget that it doesn’t need to be this way. Technology is ready to start listening. We just need to have the courage to speak up. 🗣</p>
+                <section aria-labelledby='layout_components' class='article__section'>
+                    <h2 class='mb copy' id='layout_components'>Layout components</h2>
+                    <p>Find a way to distinguish layout components in your application. It might be a comment in the file, a naming convention or the organisation of components in folders... it doesn't matter. What matters is we need a way to convey our intentions quickly to other developers.</p>
+                    <p>When we have common understanding of what a layout component is we can enforce expectations in code-reviews or linting.</p>
+                    <p>Layout components:</p>
+                    <div class='mt'>
+                        <ul>
+                            <li>own responsibility for layout and nothing more</li>
+                            <li>should never apply any presentational styles</li>
+                            <li>should not contain any application logic</li>
+                            <li>own responsibility for the layout of child items.</li>
+                        </ul>
+                    </div>
+                    <p>That last point might be a little confusing at first. Why children and not themselves?</p>
+                    <p>In modern CSS there are two parts that contribute to layout:</p>
+                    <div class='mt'>
+                        <ul>
+                            <li>A parent item, which sets the display mode</li>
+                            <li>A child item, which participates in the parent items display mode.</li>
+                        </ul>
+                    </div>
+                    <p>In other words, we have a <code>grid-container</code> and <code>grid-items</code>, or a <code>flex-container</code> and <code>flex-items</code>. There is always a parent/child relationship.</p>
+                    <p>To get the intended layout, we need the parent item and the child item to work together. Updating one of them independently from the other, will result in a broken layout. We have a word for this, it's called a dependency.</p>
+                    <p>Despite this dependency, we continue to make these separate components with no direct link. We simply hope that people put them together in the right way and don't change them. We call that an unmanaged dependency.</p>
+                    <p>The solution is to co-locate the layout concerns with the parent item. There are a number of ways this can happen...</p>
                 </section>
-                <section aria-labelledby='yourself' class='article__section'>
-                    <h2 class='mb copy' id='yourself'>Just be yourself</h2>
-                    <p>When I moved from Mexico to the US, I had difficulties expressing myself in English. And because personal expression is so important to me, I had a lot of frustrating experiences where I longed to use the Spanish words I felt more comfortable with. But I also knew that I wanted to make a life here; I knew that this language was to be my new medium of communication. So I was patient with myself and, thankfully, so too were my new friends and colleagues. 🇲🇽🇺🇸</p>
-                    <p>We’ll all have to be patient with this new conversational technology. We still have a lot of work to do to improve natural language understanding and speech technology. In the meantime, you’re bound to have a few frustrating interactions where, like me in my first years here in the US, you long for your accustomed medium. But deep down, you know the world is changing and many of these interaction models are becoming obsolete. 🌎</p>
-                    <figure>
-                        <amp-img alt='Just be yourself' data-src='./img/rsp-cst-railway.png' height='600' layout='responsive' src='./img/cst-railway.png' width='800'><noscript><img alt='Just be yourself' height='600' loading='lazy' src='./img/cst-railway.png' width='800'/></noscript></amp-img>
-                    </figure>
-                    <p>We should just be grateful that we don’t need to learn a new language to interact with this new technology. We just need to get used to speaking it with somebody — or better yet, something — that is still learning to talk. So be patient, be open-minded, and just be yourself. Only then will the future of technology finally take a human shape.This might be the end of the article, but hopefully the beginning of a longer conversation. I’m eager to expand my thinking in this space and would love to hear your perspectives. 🎆</p>
-                    <p>Fore more about this conversation, here’s my latest talk @ CX SF 2019 🕺🏽and podcast at Forrester What It Means series (The Ambiguity-Laden March Toward People-Centric Design). 👋🏽</p>
+                <section aria-label='use_a_selector' class='article__section'>
+                    <h2 class='mb copy' id='use_a_selector'>Use A * Selector</h2>
+                    <p>Use the cascade to your advantage and apply a <code>*</code> selector to target all immediate children of a layout component.</p>
+                    <p>For example:</p>
+                    <pre><code><span class="pun">.</span><span class="pln">layout </span><span class="pun">{</span><span class="kwd">
+  display</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">.</span><span class="pln">layout </span><span class="pun">></span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">
+  flex</span><span class="kwd">-</span><span class="kwd">basis</span><span class="pun">:</span><span class="pln"> </span><span class="lit">50</span><span class="pun">%;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+                    <p>This works, even with CSS-in-JS and you might be interested to know the * selector doesn’t increase specificity, so it’s easy to override with classic CSS, should you need.</p>
+                    <p>This might seem simple, but it works in most cases.</p>
                 </section>
             </div>
             <footer class='article__footer'>
@@ -150,12 +205,12 @@
         <div class='nextprev'>
             <div class='nextprev__column'>
                 <div class='nextprev__column_start'>
-                    <a class='nextprev__link_start nextprev__link' href='./article.html'>
+                    <a class='nextprev__link_start nextprev__link' href='./how.html'>
                         <span class='nextprev__article_title'>Previous article</span>
                     </a>
                 </div>
                 <div class='nextprev__column_end'>
-                    <a class='nextprev__link_end nextprev__link' href='./css.html'>
+                    <a class='nextprev__link_end nextprev__link' href='./410.html'>
                         <span class='nextprev__article_title'>Next article</span>
                     </a>
                 </div>
