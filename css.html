@@ -177,11 +177,11 @@
                     <p>Despite this dependency, we continue to make these separate components with no direct link. We simply hope that people put them together in the right way and don't change them. We call that an unmanaged dependency.</p>
                     <p>The solution is to co-locate the layout concerns with the parent item. There are a number of ways this can happen...</p>
                 </section>
-                <section aria-label='use_a_selector' class='article__section'>
+                <section aria-labelledby='use_a_selector' class='article__section'>
                     <h2 class='mb copy' id='use_a_selector'>Use A * Selector</h2>
                     <p>Use the cascade to your advantage and apply a <code>*</code> selector to target all immediate children of a layout component.</p>
                     <p>For example:</p>
-                    <pre><code><span class="pun">.</span><span class="pln">layout </span><span class="pun">{</span><span class="kwd">
+                    <pre class='notranslate'><code><span class="pun">.</span><span class="pln">layout </span><span class="pun">{</span><span class="kwd">
   display</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">;</span><span class="pln">
 </span><span class="pun">}</span><span class="pln">
 
@@ -190,6 +190,191 @@
 </span><span class="pun">}</span></code></pre>
                     <p>This works, even with CSS-in-JS and you might be interested to know the * selector doesn’t increase specificity, so it’s easy to override with classic CSS, should you need.</p>
                     <p>This might seem simple, but it works in most cases.</p>
+                </section>
+                <section aria-labelledby='render_mark_up_that_wraps_child_items' class='article__section'>
+                    <h2 class='mb copy' id='render_mark_up_that_wraps_child_items'>Render mark-up that wraps child items</h2>
+                    <p>Another option is to make the layout component responsible for rendering mark-up that wraps child items.</p>
+                    <p>This allows us to more directly control both sides of the parent/child relationship and is useful for ensuring semantic and accessible mark-up.</p>
+                    <pre class='notranslate'><code><span class="kwd">const</span><span class="pln"> </span><span class="typ">Layout</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">({</span><span class="pln">items</span><span class="pun">})</span><span class="pln"> </span><span class="pun">-></span><span class="pln"> </span><span class="pun">(</span><span class="pln">
+  </span><span class="pun"><</span><span class="pln">ul classname</span><span class="pun">={</span><span class="pln">parentStyles</span><span class="pun">}></span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">items</span><span class="pun">.</span><span class="pln">map</span><span class="pun">(</span><span class="pln">item  </span><span class="pun">=></span><span class="pln"> </span><span class="pun">(</span><span class="pln">
+      </span><span class="pun"><</span><span class="pln">li classname</span><span class="pun">={</span><span class="pln">childItem</span><span class="pun">}>{</span><span class="pln">item</span><span class="pun">}</</span><span class="pln">li</span><span class="pun">></span><span class="pln">
+    </span><span class="pun">))}</span><span class="pln">
+  </span><span class="pun"></</span><span class="pln">ul</span><span class="pun">></span><span class="pln">
+</span><span class="pun">)</span></code></pre>
+                    <p>In the example above I'm ensuring the children of a <code>ul</code> will always be an <code>li</code>. At the same time I'm applying styles for the layout to both the parent and child items. These are managed somewhere in the layout component.</p>
+                </section>
+                <section aria-labelledby='export_styles_to_be_used_by_child_items' class='article__section'>
+                    <h2 class='mb copy' id='export_styles_to_be_used_by_child_items'>Export styles to be used by child-items</h2>
+                    <p>The biggest downside of rendering mark-up that wraps child items is you need to pass a list of items that get rendered into specific slots. That's ok for a simple list, but not ideal for more complicated layouts. As a final escape hatch for complicated components, you can export styles from the parent to be used by a child item.</p>
+                    <p>This allows us to co-locate layout concerns for a particular component.</p>
+                    <pre class='notranslate'><code><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> sectionHeader </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">"./Page"</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Heading</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=></span><span class="pln"> </span><span class="pun"><</span><span class="pln">h1 classname</span><span class="pun">={</span><span class="pln">sectionHeader</span><span class="pun">}></span><span class="pln">A </span><span class="typ">Heading</span><span class="pun"></</span><span class="pln">h1</span><span class="pun">>;</span></code></pre>
+                    <p>In the example above <code>Heading</code> still needs to be a child of <code>Page</code> but the dependency between these components is no longer hidden.</p>
+                    <p>By passing just the layout styles between components (not presentation) we're being explicit about what the dependency is. The <code>Heading</code> component is still responsible for any presentational styles applied to the <code>h1</code>.</p>
+                </section>
+                <section aria-labelledby='presentational_components' class='article__section'>
+                    <h2 class='mb copy' id='presentational_components'>Presentational components</h2>
+                    <p>Once again we need a way to convey intentions and set expectations about what aspects of UI development presentational components are responsible for. It should be immediately apparent that a component is a presentational component.</p>
+                    <p>Presentational components:</p>
+                    <div class='mt'>
+                        <ul>
+                            <li>deal with visual design,</li>
+                            <li>contain no application logic,</li>
+                            <li>set no <code>display</code> or positioning properties,</li>
+                            <li>are (mostly) just decorated HTML elements,</li>
+                            <li>should be size agnostic.</li>
+                        </ul>
+                    </div>
+                    <p>Once again, the last point is the least intuitive. Size agnostic means presentational components should fill the space available. Trust in the layout components to set the constraints.</p>
+                    <p>In practical terms this means most UI components have no <code>display</code>, <code>width</code>, <code>height</code> or <code>margin</code> properties.</p>
+                    <p>This is sometimes hard to achieve. Working on presentational components is going to reveal problems or oversights in the layout (or even missing layout components). It feels easier to quickly add a margin to 'fix' the presentational component, but by keeping the responsibility for layout with the parent item, presentational components can be re-used in any part of the application.</p>
+                    <p>By adding CSS to presentational components to 'fix' layout issues, we are adding hidden dependencies between components. For long term maintainability, it's far better to fix these problems at the layout level.</p>
+                    <p>I know this is not always simple, so I'm going to give you an escape hatch. However, consider this the <code>!important</code> of CSS-in-JS. Use it when you absolutely must, and use it right. For certain types of components (usually <code>inline-block</code> elements where content is dependent on dynamic data and there is no obvious parent layout component) it sometimes makes sense to add a utility class, or a prop to set a single CSS property. If possible, these should still remain separate from the presentational component and be imported from a utility file. I suggest naming this <code>liabilities.js</code> or <code>debt.js</code>.</p>
+                    <p>Always try to avoid hard coding width and height in presentational components.</p>
+                </section>
+                <section aria-labelledby='ui_states' class='article__section'>
+                    <h2 class='mb copy' id='ui_states'>UI states</h2>
+                    <p>Both layout and presentational components have different types of UI state. UI state is different from application state, but the two are often conflated in modern web applications.</p>
+                    <p>From a UI development perspective, the state of a component refers to different display or layout variations that might occur when a user interacts with it.</p>
+                    <p>As a UI developer knowing the number variations and what styles are applied in each case is not only critical, it's the job description. So why has this has become so hard to know in modern JavaScript applications?</p>
+                    <p>When props are passed to a function that resolves styles, the number of variations can be hard or impossible to verify. This is an example from a real-word application I worked on:</p>
+                    <pre class='notranslate'><code><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> theme </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">"theme.js"</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> styles </span><span class="pun">=</span><span class="pln"> </span><span class="pun">({</span><span class="pln"> selectedItems</span><span class="pun">,</span><span class="pln"> activeItems</span><span class="pun">,</span><span class="pln"> id </span><span class="pun">})</span><span class="pln"> </span><span class="pun">=></span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    backgroundColor</span><span class="pun">:</span><span class="pln"> selectedItems</span><span class="pun">.</span><span class="pln">includes</span><span class="pun">(</span><span class="pln">id</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">?</span><span class="pln"> activeItems</span><span class="pun">.</span><span class="pln">includes</span><span class="pun">(</span><span class="pln">id</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">?</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">color
+        </span><span class="pun">:</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">colorAlt
+      </span><span class="pun">:</span><span class="pln"> activeItems</span><span class="pun">.</span><span class="pln">includes</span><span class="pun">(</span><span class="pln">id</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">?</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">color
+      </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">":hover"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      border</span><span class="pun">:</span><span class="pln"> </span><span class="pun">`</span><span class="pln">solid </span><span class="lit">1px</span><span class="pln"> $</span><span class="pun">{</span><span class="pln">theme</span><span class="pun">.</span><span class="pln">colorAlt</span><span class="pun">}`</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">};</span><span class="pln">
+</span><span class="pun">};</span></code></pre>
+                    <p>These styles are so difficult to reason about because you have to consider how the application state (props) effects each individual CSS property.</p>
+                    <p>Not only does this make it hard to read, it makes it difficult to test. If the props passed to a style function don’t represent a finite set of UI states, how do we know the current set of resolved values is something intended in the design?</p>
+                    <p>Once again CSS architecture taught us some things about how to manage UI state. SMACSS in particular talked about state and identified three different types of UI state:</p>
+                    <div class='mt'>
+                        <ul>
+                            <li>Modifier states</li>
+                            <li>Behavioural states</li>
+                            <li>Pseudo states</li>
+                        </ul>
+                    </div>
+                    <p>I'm paraphrasing, because SMACSS was not thinking about components, so let's revise some of these ideas for modern front-end architecture.</p>
+                    <h3 class='mb copy' id='modifier_states'>Modifier states</h3>
+                    <p>Modifier states are top-level variations in design. They are not necessarily dependent on application state and may be applied as a stylistic choice.</p>
+                    <p>Examples include size variations, primary and secondary buttons, or the position of an image within a layout component.</p>
+                    <p>Modifier states can be extended with behavioural states.</p>
+                    <h3 class='mb copy' id='behavioural_states'>Behavioural states</h3>
+                    <p>Behavioural states are dependent on application logic. They communicate something about the state of a component to the user. Examples might include success, failure and loading indicators, or the current item in a navigation menu.</p>
+                    <h3 class='mb copy' id='pseudo_states'>Pseudo states</h3>
+                    <p>Pseudo states are more temporary. They usually map directly to persistent states in the browser, rather than application logic. Typical examples include <code>hover</code>, <code>focus</code> and <code>active</code> but this might also include <code>disabled</code> or <code>selected</code>.</p>
+                </section>
+                <section aria-labelledby='ui_states_are_finite' class='article__section'>
+                    <h2 class='mb copy' id='ui_states_are_finite'>UI states are finite</h2>
+                    <p>The solution to verifying UI states is to resolve styles down to a set of finite states that can be easily understood.</p>
+                    <p>To ensure this, I start by mapping out UI states into a table:</p>
+                    <div class='table'>
+                        <table>
+                            <thead>
+                                <tr><th id='modifier__states'>Modifier state</th><th id='behavioural__states'>Behavioural state</th><th id='pseudo__states'>Pseudo state</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td headers='modifier__states'>Large</td><td headers='behavioural__states'><strong>Loading</strong></td><td headers='pseudo__states'>Hover</td></tr>
+                                <tr><td headers='modifier__states'><strong>Medium</strong></td><td headers='behavioural__states'>Success</td><td headers='pseudo__states'><strong>Focus</strong></td></tr>
+                                <tr><td headers='modifier__states'>Small</td><td headers='behavioural__states'>Error</td><td headers='pseudo__states'>Disabled</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Next consider how these states combine. Typically you only have one modifier and one behavioural state active at any one time.</p>
+                    <p>You can visualise this as a tree:</p>
+                    <p>If you find it's possible to have two behavioural states active at the same time, split them into different categories.</p>
+                    <div class='table'>
+                        <table>
+                            <thead>
+                                <tr><th id='mod_state'>Modifier state</th><th id='net_state'>Network state</th><th id='tod_state'>Todo state</th><th id='pse_state'>Pseudo state</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td headers='mod_state'>Large</td><td headers='net_state'><strong>Loading</strong></td><td headers='tod_state'>To Do</td><td headers='pse_state'>Hover</td>
+                                </tr>
+                                <tr><td headers='mod_state'><strong>Medium</strong></td><td headers='net_state'>Success</td><td headers='tod_state'><strong>Doing</strong></td><td headers='pse_state'><strong>Focus</strong></td>
+                                </tr>
+                                <tr><td headers='mod_state'>Small</td><td headers='net_state'>Error</td><td headers='tod_state'>Done</td><td headers='pse_state'>Disabled</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Warning</strong>: If you find you do need this, consider carefully, as it’s often a sign that you have two components pretending to be one.</p>
+                    <p>Because state can be additive, (i.e. behavioural states can change depending on the modifier state), to work out the total number of variations, we multiply the possibilities. With 3 types of state and 3 possibilities for each, there are (<code>3 x 3 x 3</code>), 27 possible variations.</p>
+                    <p>Obviously not every combination matters. The disabled state might look the same for every type of modifier and maybe the pseudo states are the same for all modifiers. We can eliminate duplicate states:</p>
+                    <p>CSS forced us to flatten the state tree and have a single selector for each possible combination of state. Although sometimes tedious, this made us acutely aware of how many variations there were.</p>
+                    <p>JavaScript doesn't force us to flatten the state tree in any way. The concept of different types of UI state often lost and at worst the value of individual CSS properties depends on the resolution of business logic and data within the “style sheet”.</p>
+                    <p>It doesn’t matter whether you’re composing styles with classnames, template strings or objects in JavaScript. It remains important to have a single representation for each of the possible UI states.</p>
+                    <p>My current favoured approach is to resolve application logic outside the style function, then and pass keys for modifier and behavioural state. Where a behavioural state changes depending on the modifier, I use CSS custom properties to set variations that are later applied in the behaviour.</p>
+                    <pre class='notranslate'><code><span class="kwd">const</span><span class="pln"> modifiers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  light</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    color</span><span class="pun">:</span><span class="pln"> </span><span class="str">"#777"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"--pressed-color"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"#333"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> behaviours </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  pressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    color</span><span class="pun">:</span><span class="pln"> </span><span class="str">"var(--pressed-color, #777)"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+</span><span class="kwd">export</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> style </span><span class="pun">=</span><span class="pln"> </span><span class="pun">({</span><span class="pln"> modifier</span><span class="pun">,</span><span class="pln"> behaviour </span><span class="pun">})</span><span class="pln"> </span><span class="pun">=></span><span class="pln"> </span><span class="pun">({</span><span class="pln">
+  fontSize</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1em"</span><span class="pun">,</span><span class="pln"> </span><span class="com">// Default Styles</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">modifiers</span><span class="pun">[</span><span class="pln">modifier</span><span class="pun">],</span><span class="pln"> </span><span class="com">// Apply Modifiers</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">behaviours</span><span class="pun">[</span><span class="pln">behaviour</span><span class="pun">]</span><span class="pln"> </span><span class="com">// Apply Behaviours</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+                    <p>This allows me to have additive states with a fairly flat and readable representation of each of the styles applied to each variation of a UI component.</p>
+                </section>
+                <section aria-labelledby='container_components' class='article__section'>
+                    <h2 class='mb copy' id='container_components'>Container components</h2>
+                    <p>The final type of component we need to distinguish is a container component. Many people might already have an understanding of what this means, but from a UI perspective, I'm not referring to any particular design pattern.</p>
+                    <p>From a UI perspective a container component is simply where the application logic is resolved down to a set of modifiers and behavioural keys that are passed to presentational and layout components.</p>
+                    <p>A container component:</p>
+                    <div class='mt'>
+                        <ul>
+                            <li>contains no presentation or layout styles</li>
+                            <li>should not render mark-up (except children)</li>
+                            <li>can wrap layout and presentational components</li>
+                            <li>may fetch data, setup events, refs etc...</li>
+                            <li>is where non-reusable code lives.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section aria-labelledby='but_its_only_ui' class='article__section'>
+                    <h2 class='mb copy' id='but_its_only_ui'>But it's only UI!</h2>
+                    <p>As the responsibilities of front-end developers have become more broad, some might consider the conventions outlined here to be not worth following. I've seen teams spend weeks planning the right combination of framework, build tools, workflows and patterns only to give zero consideration to the way they architect UI components. It's often considered the last step in the process and not worthy of the same level of consideration.</p>
+                    <p>It's important! I've seen well-planned project fail or go well over budget because the UI architecture was poorly planned and became un-maintainable as the project grew.</p>
+                    <p>This disappoints me because the problems are hard and my colleagues and friends who helped establish best practices in CSS are serious engineers, with broad skills, who applied knowledge across disciplines.</p>
+                    <p>Many of the ideas in CSS architecture predate CSS itself and have strong foundations in computer science and software architecture. I know developers who can understand complex architectural problems but fail to see the similarities, or worse yet, choose not to apply this knowledge to declarative front-end code.</p>
+                    <p>I know you can do it. To help, I've got some questions to ask yourself when planning UI components.</p>
+                </section>
+                <section aria-labelledby='questions_to_ask' class='article__section'>
+                    <h2 class='mb copy' id='questions_to_ask'>Questions to ask when planning UI components</h2>
+                    <div>
+                        <ul>
+                            <li>How many UI states does this component have?</li>
+                            <li>Can I easily validate the current UI state?</li>
+                            <li>How ergonomic are my styles? (i.e. how quickly can someone else read them)</li>
+                            <li>Am I creating sensible UI abstractions? Or am I drawing boxes around the visual design?</li>
+                            <li>Am I separating layout form visual design where possible?</li>
+                            <li>Am I separating application logic from UI components?</li>
+                            <li>Am I communicating my intentions to other developers and giving semantic meaning to components.</li>
+                        </ul>
+                    </div>
+                    <p>Keep practising this and you will build better lasting UIs.</p>
                 </section>
             </div>
             <footer class='article__footer'>
