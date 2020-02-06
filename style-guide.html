@@ -84,6 +84,7 @@
                 <div class='article__section'>
                     <p>Web Fundamental provides a wide variety of styled elements and CSS classes to use in documentation. Although you may supplement these styles with custom CSS, you should only use custom CSS when strictly necessary. If you find that you need to create a new style that will apply to more than a single page, please file an issue on GitHub so that other pages can use it as well. This ensures site-wide consistency.</p>
                 </div>
+                <div aria-hidden='true' class='toc'></div>
                 <section aria-labelledby='headings' class='article__section'>
                     <h2 class='mb copy' id='headings'>Headings</h2>
                     <p>The top-most heading of the page is the page's title. The page body must not contain another <code>&lt;h1&gt;</code>, to avoid confusing non-visual browsers.</p>
@@ -152,7 +153,7 @@
                     <pre class='notranslate mt'><code><span class="pun">*</span><span class="pln"> </span><span class="typ">Declarative</span><span class="pln"> two</span><span class="pun">-</span><span class="pln">way data</span><span class="pun">-</span><span class="pln">binding</span><span class="pun">:</span><span class="pln"> </span><span class="str">&lt;code&gt;</span><span class="pun">&lt;</span><span class="pln">input id</span><span class="pun">=</span><span class="str">"input"</span><span class="pln"> value</span><span class="pun">=</span><span class="str">"&amp;#123;{foo}}"</span><span class="pun">&gt;&lt;/</span><span class="pln">code</span><span class="pun">&gt;</span></code></pre>
                 </section>
                 <section aria-labelledby='callouts' class='article__section'>
-                    <h2 class='mb' id='callouts'>Callouts</h2>
+                    <h2 class='mb copy' id='callouts'>Callouts</h2>
                     <blockquote class='aside note'><p><strong>Note:</strong> This type of callout is an ordinary note or tip.</p></blockquote>
                     <blockquote class='aside caution'><p><strong>Caution:</strong> This type of callout suggests proceeding with caution.</p></blockquote>
                     <blockquote class='aside warning'><p><strong>Warning:</strong> This type of callout is stronger than a Caution; it means 'Don't do this.'</p></blockquote>
@@ -162,6 +163,118 @@
                     <blockquote class='aside codelab'><p><strong>Codelab:</strong> This type of callout is for notes about Google Developers Codelabs provide a guided, tutorial, hands-on coding experience.</p></blockquote>
                     <blockquote class='aside objective'><p><strong>Objective:</strong> This type of callout defines the goal of a procedure.</p></blockquote>
                     <blockquote class='aside dogfood'><p><strong>Dogfood:</strong> This type of callout is for notes that apply temporarily during internal dogfood testing. Remove all Dogfood callouts before making a document publicly visible.</p></blockquote>
+                </section>
+                <section aria-labelledby='lists' class='article__section'>
+                    <h2 class='copy' id='lists'>Lists</h2>
+                    <h3 class='mb copy' id='list_unordered'>Unordered</h3>
+                    <ul>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <ul>
+                                <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                                <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                                <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                            </ul>
+                        </li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                    </ul>
+                    <h3 class='mb copy' id='list_ordered'>Ordered</h3>
+                    <ol>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <ol><li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                                <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                                <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                            </ol>
+                        </li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                        <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li>
+                    </ol>
+                </section>
+                <section aria-labelledby='tables' class='article__section'>
+                    <h2 class='mb copy' id='tables'>Tables</h2>
+                    <p>Tables are supported with standard markup. Here's a typical table with a heading row, several regular rows, and a row marked up as <code>&lt;tr class='alt'&gt;</code>, which produces a darker background that can be used as an alternate header.</p>
+                    <div class='table'><table><thead><tr><th>One</th><th>Two</th><th>Three</th></tr></thead><tbody><tr><td>1.0</td><td>2.0</td><td>3.0</td></tr><tr><td>1.1</td><td>2.1</td><td>3.1</td></tr><tr class='alt'><td colspan='3'>Here come some numbers that end in .2!</td></tr><tr><td>1.2</td><td>2.2</td><td>3.2</td></tr></tbody></table></div>
+                    <h3 class='mb copy' id='responsive_table'>Responsive tables</h3>
+                    <p>To make a table responsive, add the <code>responsive</code> class to the table.</p>
+                    <div class='table'>
+                        <table><thead><tr><th colspan='2'>Parameters</th></tr></thead><tbody><tr><td><code>value</code></td><td><code>String</code><br>the choice's value, which respondents see as a label when viewing the form</td></tr><tr><td><code>navigationType</code></td><td><code><a href='#'>PageNavigationType</a></code><br>the choice's navigation type</td></tr></tbody></table>
+                    </div>
+                    <h3 class='mb copy' id='invisible_table'>Invisible tables</h3>
+                    <p>You can arrange text in columns, or otherwise make a table invisible, using <code>&lt;table class='columns'&gt;...&lt;/table&gt;</code>. This is typically used for arranging long narrow lists.</p>
+                    <div class='table'><table class='columns'><tr><td><code>auto</code><br/><code>break</code><br/><code>case</code><br/><code>char</code></td><td><code>const</code><br/><code>continue</code><br/><code>default</code><br/><code>do</code></td><td><code>double</code><br/><code>else</code><br/><code>enum</code><br/><code>extern</code></td></tr></table></div>
+                </section>
+                <section aria-labelledby='external' class='article__section'>
+                    <h2 class='mb copy' id='external'>External links</h2>
+                    <p>To mark a link as external, use <code>&lt;a href='https://www.google.com/' class='external'&gt;External Link&lt;/a&gt;</code> when authoring in HTML, or append <code>{: .external}</code> to links when authoring in Markdown.</p>
+                    <p><a class='external' href='https://www.google.com/search?q=rizky+saskia+putra' rel='noopener' target='_blank'><span>External Link</span></a></p>
+                </section>
+                <section aria-labelledby='blockquote' class='article__section'>
+                    <h2 class='mb copy' id='blockquote'>Blockquote</h2>
+                    <blockquote><p>Currently, internships are open internationally to women (cis and trans), trans men, and genderqueer people. Additionally, they are open to residents and nationals of the United States of any gender who are Black/African American, Hispanic/Latin@, American Indian, Alaska Native, Native Hawaiian, or Pacific Islander.</p></blockquote>
+                </section>
+                <section aria-labelledby='tooltips' class='article__section'>
+                    <h2 class='mb copy' id='tooltips'>Tooltips</h2>
+                    <p>Any element that has a <code>title</code> attribute will show a tooltip (with the value of the attribute) on mouseover. For example: "...someday screen <abbr title='pixels per inch'>PPI</abbr> may increase further..." (note that the dotted underline comes from the abbr element, not the tooltip).</p>
+                </section>
+                <section aria-labelledby='keyboard_input' class='article__section'>
+                    <h2 class='mb copy' id='keyboard_input'>Keyboard Input</h2>
+                    <p>The HTML Keyboard Input element (<code>&lt;kbd&gt;</code>) represents a span of inline text denoting textual user input from a keyboard, voice input, or any other text entry device. By convention, the user agent defaults to rendering the contents of a <code>&lt;kbd&gt;</code> element using its default monospace font, although this is not mandated by the HTML standard.</p>
+                    <p>Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</p>
+                </section>
+                <section aria-labelledby='html_tags' class='article__section'>
+                    <h2 class='mb copy' id='html_tags'>HTML Tags</h2>
+                    <p>These supported tags come from the WordPress.com code <a href='http://en.support.wordpress.com/code/' title='Code'>FAQ</a>.</p>
+                    <div class='mb'><p><strong>Address Tag</strong></p></div>
+                    <address>1 Infinite Loop Cupertino, CA 95014 United States</address>
+                    <div class='mb'><p><strong>Anchor Tag (aka. Link)</strong></p></div>
+                    <p>This is an example of a <a href='http://apple.com/' title='Apple'>link</a>.</p>
+                    <div class='mb'><p><strong>Abbreviation Tag</strong></p></div>
+                    <p>The abbreviation <abbr title='Seriously'>srsly</abbr> stands for "seriously".</p>
+                    <div class='mb'><p><strong>Acronym Tag (<em>deprecated in HTML5</em>)</strong></p></div>
+                    <p>The acronym <acronym title='For The Win'>ftw</acronym> stands for "for the win".</p>
+                    <div class='mb'><p><strong>Big Tag&nbsp;(<em>deprecated in HTML5</em>)</strong></p></div>
+                    <p>These tests are a <big>big</big> deal, but this tag is no longer supported in HTML5.</p>
+                    <div class='mb'><p><strong>Cite Tag</strong></p></div>
+                    <p>"Code is poetry." - <cite>Automattic</cite></p>
+                    <div class='mb'><p><strong>Code Tag</strong></p></div>
+                    <p>You will learn later on in these tests that <code>word-wrap: break-word;</code> will be your best friend.</p>
+                    <div class='mb'><p><strong>Delete Tag</strong> This tag will let you</p></div>
+                    <p><del>strikeout text</del>, but this tag is no longer supported in HTML5 (use the <code>&lt;strike&gt;</code> instead).</p>
+                    <div class='mb'><p><strong>Emphasize Tag</strong></p></div>
+                    <p>The emphasize tag should <em>italicize</em> text.</p>
+                    <div class='mb'><p><strong>Insert Tag</strong> This tag should denote</p></div>
+                    <p><ins>inserted</ins> text.</p>
+                    <div class='mb'><p><strong>Keyboard Tag</strong></p></div>
+                    <p>This scarsly known tag emulates <kbd>keyboard text</kbd>, which is usually styled like the <code>&lt;code&gt;</code> tag.</p>
+                    <div class='mb'><p><strong>Preformatted Tag</strong></p></div>
+                    <p>This tag styles large blocks of code.</p>
+                    <pre class='notranslate mt'><code><span class="pun">.</span><span class="pln">post</span><span class="pun">-</span><span class="pln">title </span><span class="pun">{</span><span class="pln">
+ margin</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">5px</span><span class="pun">;</span><span class="pln">
+ font</span><span class="pun">-</span><span class="pln">weight</span><span class="pun">:</span><span class="pln"> bold</span><span class="pun">;</span><span class="pln">
+ font</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">38px</span><span class="pun">;</span><span class="pln">
+ line</span><span class="pun">-</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.2</span><span class="pun">;</span><span class="pln">
+ </span><span class="kwd">and</span><span class="pln"> here</span><span class="str">'s a line of some really, really, really, really long text, just to see how the PRE tag handles it and to find out how it overflows;
+}</span></code></pre>
+                    <div class='mb'><p><strong>Quote Tag</strong></p></div>
+                    <p><q>Developers, developers, developers...</q> - Steve Ballmer</p>
+                    <div class='mb'><p><strong>Strong Tag</strong></p></div>
+                    <p>This tag shows <strong>boldtext.</strong></p>
+                    <div class='mb'><p><strong>Subscript Tag</strong></p></div>
+                    <p>Getting our science styling on with H<sub>2</sub>O, which should push the "2" down.</p>
+                    <div class='mb'><p><strong>Superscript Tag</strong></p></div>
+                    <p>Still sticking with science and Isaac Newton's E = MC<sup>2</sup>, which should lift the 2 up.</p>
+                    <div class='mb'><p><strong>Teletype Tag&nbsp;(<em>deprecated in HTML5</em>)</strong></p></div>
+                    <p>This rarely used tag emulates <tt>teletype text</tt>, which is usually styled like the <code>&lt;code&gt;</code> tag.</p>
+                    <div class='mb'><p><strong>Variable Tag</strong></p></div>
+                    <p>This allows you to denote <var>variables</var>.</p>
                 </section>
             </div>
             <footer class='article__footer'>

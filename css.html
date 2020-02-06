@@ -310,7 +310,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p><strong>Warning</strong>: If you find you do need this, consider carefully, as it’s often a sign that you have two components pretending to be one.</p>
+                    <blockquote class='aside warning'><p><strong>Warning</strong>: If you find you do need this, consider carefully, as it’s often a sign that you have two components pretending to be one.</p></blockquote>
                     <p>Because state can be additive, (i.e. behavioural states can change depending on the modifier state), to work out the total number of variations, we multiply the possibilities. With 3 types of state and 3 possibilities for each, there are (<code>3 x 3 x 3</code>), 27 possible variations.</p>
                     <p>Obviously not every combination matters. The disabled state might look the same for every type of modifier and maybe the pseudo states are the same for all modifiers. We can eliminate duplicate states:</p>
                     <p>CSS forced us to flatten the state tree and have a single selector for each possible combination of state. Although sometimes tedious, this made us acutely aware of how many variations there were.</p>
