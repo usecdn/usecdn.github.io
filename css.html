@@ -180,13 +180,14 @@
                     <h2 class='mb copy' id='use_a_selector'>Use A * Selector</h2>
                     <p>Use the cascade to your advantage and apply a <code>*</code> selector to target all immediate children of a layout component.</p>
                     <p>For example:</p>
-                    <pre class='notranslate'><code><span class="pun">.</span><span class="pln">layout </span><span class="pun">{</span><span class="kwd">
-  display</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">;</span><span class="pln">
-</span><span class="pun">}</span><span class="pln">
+                    <pre class='notranslate'><code><span class="token selector">.layout</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-</span><span class="pun">.</span><span class="pln">layout </span><span class="pun">></span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">
-  flex</span><span class="kwd">-</span><span class="kwd">basis</span><span class="pun">:</span><span class="pln"> </span><span class="lit">50</span><span class="pun">%;</span><span class="pln">
-</span><span class="pun">}</span></code></pre>
+<span class="token selector">.layout > *</span> <span class="token punctuation">{</span>
+  <span class="token property">flex-basis</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
                     <p>This works, even with CSS-in-JS and you might be interested to know the * selector doesn’t increase specificity, so it’s easy to override with classic CSS, should you need.</p>
                     <p>This might seem simple, but it works in most cases.</p>
                 </section>
@@ -194,22 +195,22 @@
                     <h2 class='mb copy' id='render_mark_up_that_wraps_child_items'>Render mark-up that wraps child items</h2>
                     <p>Another option is to make the layout component responsible for rendering mark-up that wraps child items.</p>
                     <p>This allows us to more directly control both sides of the parent/child relationship and is useful for ensuring semantic and accessible mark-up.</p>
-                    <pre class='notranslate'><code><span class="kwd">const</span><span class="pln"> </span><span class="typ">Layout</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">({</span><span class="pln">items</span><span class="pun">})</span><span class="pln"> </span><span class="pun">-></span><span class="pln"> </span><span class="pun">(</span><span class="pln">
-  </span><span class="pun"><</span><span class="pln">ul classname</span><span class="pun">={</span><span class="pln">parentStyles</span><span class="pun">}></span><span class="pln">
-    </span><span class="pun">{</span><span class="pln">items</span><span class="pun">.</span><span class="pln">map</span><span class="pun">(</span><span class="pln">item  </span><span class="pun">=></span><span class="pln"> </span><span class="pun">(</span><span class="pln">
-      </span><span class="pun"><</span><span class="pln">li classname</span><span class="pun">={</span><span class="pln">childItem</span><span class="pun">}>{</span><span class="pln">item</span><span class="pun">}</</span><span class="pln">li</span><span class="pun">></span><span class="pln">
-    </span><span class="pun">))}</span><span class="pln">
-  </span><span class="pun"></</span><span class="pln">ul</span><span class="pun">></span><span class="pln">
-</span><span class="pun">)</span></code></pre>
+                    <pre class='notranslate'><code><span class="token keyword">const</span> Layout <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>items<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">(</span>
+  <span class="token operator"><</span>ul classname<span class="token operator">=</span><span class="token punctuation">{</span>parentStyles<span class="token punctuation">}</span><span class="token operator">></span>
+    <span class="token punctuation">{</span>items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span>  <span class="token operator">=></span> <span class="token punctuation">(</span>
+      <span class="token operator"><</span>li classname<span class="token operator">=</span><span class="token punctuation">{</span>childItem<span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>item<span class="token punctuation">}</span>li<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  ul<span class="token operator">></span>
+<span class="token punctuation">)</span></code></pre>
                     <p>In the example above I'm ensuring the children of a <code>ul</code> will always be an <code>li</code>. At the same time I'm applying styles for the layout to both the parent and child items. These are managed somewhere in the layout component.</p>
                 </section>
                 <section aria-labelledby='export_styles_to_be_used_by_child_items' class='article__section'>
                     <h2 class='mb copy' id='export_styles_to_be_used_by_child_items'>Export styles to be used by child-items</h2>
                     <p>The biggest downside of rendering mark-up that wraps child items is you need to pass a list of items that get rendered into specific slots. That's ok for a simple list, but not ideal for more complicated layouts. As a final escape hatch for complicated components, you can export styles from the parent to be used by a child item.</p>
                     <p>This allows us to co-locate layout concerns for a particular component.</p>
-                    <pre class='notranslate'><code><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> sectionHeader </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">"./Page"</span><span class="pun">;</span><span class="pln">
+                    <pre class='notranslate'><code><span class="token keyword">import</span> <span class="token punctuation">{</span> sectionHeader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./Page"</span><span class="token punctuation">;</span>
 
-</span><span class="kwd">const</span><span class="pln"> </span><span class="typ">Heading</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=></span><span class="pln"> </span><span class="pun"><</span><span class="pln">h1 classname</span><span class="pun">={</span><span class="pln">sectionHeader</span><span class="pun">}></span><span class="pln">A </span><span class="typ">Heading</span><span class="pun">&lt;/</span><span class="pln">h1</span><span class="pun">>;</span></code></pre>
+<span class="token keyword">const</span> <span class="token function-variable function">Heading</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator"><</span>h1 classname<span class="token operator">=</span><span class="token punctuation">{</span>sectionHeader<span class="token punctuation">}</span><span class="token operator">></span><span class="token constant">A</span> Heading<span class="token operator"><</span><span class="token operator">/</span>h1<span class="token operator">></span><span class="token punctuation">;</span></code></pre>
                     <p>In the example above <code>Heading</code> still needs to be a child of <code>Page</code> but the dependency between these components is no longer hidden.</p>
                     <p>By passing just the layout styles between components (not presentation) we're being explicit about what the dependency is. The <code>Heading</code> component is still responsible for any presentational styles applied to the <code>h1</code>.</p>
                 </section>
@@ -239,22 +240,22 @@
                     <p>From a UI development perspective, the state of a component refers to different display or layout variations that might occur when a user interacts with it.</p>
                     <p>As a UI developer knowing the number variations and what styles are applied in each case is not only critical, it's the job description. So why has this has become so hard to know in modern JavaScript applications?</p>
                     <p>When props are passed to a function that resolves styles, the number of variations can be hard or impossible to verify. This is an example from a real-word application I worked on:</p>
-                    <pre class='notranslate'><code><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> theme </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">"theme.js"</span><span class="pun">;</span><span class="pln">
+                    <pre class='notranslate'><code><span class="token keyword">import</span> <span class="token punctuation">{</span> theme <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"theme.js"</span><span class="token punctuation">;</span>
 
-</span><span class="kwd">const</span><span class="pln"> styles </span><span class="pun">=</span><span class="pln"> </span><span class="pun">({</span><span class="pln"> selectedItems</span><span class="pun">,</span><span class="pln"> activeItems</span><span class="pun">,</span><span class="pln"> id </span><span class="pun">})</span><span class="pln"> </span><span class="pun">=></span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-  </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-    backgroundColor</span><span class="pun">:</span><span class="pln"> selectedItems</span><span class="pun">.</span><span class="pln">includes</span><span class="pun">(</span><span class="pln">id</span><span class="pun">)</span><span class="pln">
-      </span><span class="pun">?</span><span class="pln"> activeItems</span><span class="pun">.</span><span class="pln">includes</span><span class="pun">(</span><span class="pln">id</span><span class="pun">)</span><span class="pln">
-        </span><span class="pun">?</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">color
-        </span><span class="pun">:</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">colorAlt
-      </span><span class="pun">:</span><span class="pln"> activeItems</span><span class="pun">.</span><span class="pln">includes</span><span class="pun">(</span><span class="pln">id</span><span class="pun">)</span><span class="pln">
-      </span><span class="pun">?</span><span class="pln"> theme</span><span class="pun">.</span><span class="pln">color
-      </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln">
-    </span><span class="str">":hover"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-      border</span><span class="pun">:</span><span class="pln"> </span><span class="pun">`</span><span class="pln">solid </span><span class="lit">1px</span><span class="pln"> $</span><span class="pun">{</span><span class="pln">theme</span><span class="pun">.</span><span class="pln">colorAlt</span><span class="pun">}`</span><span class="pln">
-    </span><span class="pun">}</span><span class="pln">
-  </span><span class="pun">};</span><span class="pln">
-</span><span class="pun">};</span></code></pre>
+<span class="token keyword">const</span> <span class="token function-variable function">styles</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> selectedItems<span class="token punctuation">,</span> activeItems<span class="token punctuation">,</span> id <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    backgroundColor<span class="token punctuation">:</span> selectedItems<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+      <span class="token operator">?</span> activeItems<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+        <span class="token operator">?</span> theme<span class="token punctuation">.</span>color
+        <span class="token punctuation">:</span> theme<span class="token punctuation">.</span>colorAlt
+      <span class="token punctuation">:</span> activeItems<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+      <span class="token operator">?</span> theme<span class="token punctuation">.</span>color
+      <span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    <span class="token string">":hover"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      border<span class="token punctuation">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">solid 1px </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>theme<span class="token punctuation">.</span>colorAlt<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
                     <p>These styles are so difficult to reason about because you have to consider how the application state (props) effects each individual CSS property.</p>
                     <p>Not only does this make it hard to read, it makes it difficult to test. If the props passed to a style function don’t represent a finite set of UI states, how do we know the current set of resolved values is something intended in the design?</p>
                     <p>Once again CSS architecture taught us some things about how to manage UI state. SMACSS in particular talked about state and identified three different types of UI state:</p>
@@ -317,24 +318,25 @@
                     <p>JavaScript doesn't force us to flatten the state tree in any way. The concept of different types of UI state often lost and at worst the value of individual CSS properties depends on the resolution of business logic and data within the “style sheet”.</p>
                     <p>It doesn’t matter whether you’re composing styles with classnames, template strings or objects in JavaScript. It remains important to have a single representation for each of the possible UI states.</p>
                     <p>My current favoured approach is to resolve application logic outside the style function, then and pass keys for modifier and behavioural state. Where a behavioural state changes depending on the modifier, I use CSS custom properties to set variations that are later applied in the behaviour.</p>
-                    <pre class='notranslate'><code><span class="kwd">const</span><span class="pln"> modifiers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-  light</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-    color</span><span class="pun">:</span><span class="pln"> </span><span class="str">"#777"</span><span class="pun">,</span><span class="pln">
-    </span><span class="str">"--pressed-color"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"#333"</span><span class="pln">
-  </span><span class="pun">}</span><span class="pln">
-</span><span class="pun">};</span><span class="pln">
+                    <pre class='notranslate'><code><span class="token keyword">const</span> modifiers <span class="token operator">=</span> <span class="token punctuation">{</span>
+  light<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    color<span class="token punctuation">:</span> <span class="token string">"#777"</span><span class="token punctuation">,</span>
+    <span class="token string">"--pressed-color"</span><span class="token punctuation">:</span> <span class="token string">"#333"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-</span><span class="kwd">const</span><span class="pln"> behaviours </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-  pressed</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-    color</span><span class="pun">:</span><span class="pln"> </span><span class="str">"var(--pressed-color, #777)"</span><span class="pln">
-  </span><span class="pun">}</span><span class="pln">
-</span><span class="pun">};</span><span class="pln">
+<span class="token keyword">const</span> behaviours <span class="token operator">=</span> <span class="token punctuation">{</span>
+  pressed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    color<span class="token punctuation">:</span> <span class="token string">"var(--pressed-color, #777)"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-</span><span class="kwd">export</span><span class="pln"> </span><span class="kwd">const</span><span class="pln"> style </span><span class="pun">=</span><span class="pln"> </span><span class="pun">({</span><span class="pln"> modifier</span><span class="pun">,</span><span class="pln"> behaviour </span><span class="pun">})</span><span class="pln"> </span><span class="pun">=></span><span class="pln"> </span><span class="pun">({</span><span class="pln">
-  fontSize</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1em"</span><span class="pun">,</span><span class="pln"> </span><span class="com">// Default Styles</span><span class="pln">
-  </span><span class="pun">...</span><span class="pln">modifiers</span><span class="pun">[</span><span class="pln">modifier</span><span class="pun">],</span><span class="pln"> </span><span class="com">// Apply Modifiers</span><span class="pln">
-  </span><span class="pun">...</span><span class="pln">behaviours</span><span class="pun">[</span><span class="pln">behaviour</span><span class="pun">]</span><span class="pln"> </span><span class="com">// Apply Behaviours</span><span class="pln">
-</span><span class="pun">});</span></code></pre>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">style</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> modifier<span class="token punctuation">,</span> behaviour <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  fontSize<span class="token punctuation">:</span> <span class="token string">"1em"</span><span class="token punctuation">,</span> <span class="token comment">// Default Styles</span>
+  <span class="token operator">...</span>modifiers<span class="token punctuation">[</span>modifier<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// Apply Modifiers</span>
+  <span class="token operator">...</span>behaviours<span class="token punctuation">[</span>behaviour<span class="token punctuation">]</span> <span class="token comment">// Apply Behaviours</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
                     <p>This allows me to have additive states with a fairly flat and readable representation of each of the styles applied to each variation of a UI component.</p>
                 </section>
                 <section aria-labelledby='container_components' class='article__section'>

@@ -106,51 +106,64 @@
                     <h5 data-ignore>This is a heading number five</h5>
                     <h3 class='copy' id='heading_6'>Heading 6</h3>
                     <h6 data-ignore>This is a heading number six</h6>
-                    <pre class='notranslate'><code><span class="pln">## Heading 2
+                    <pre class='notranslate'><code>## Heading 2
 ### Heading 3
 #### Heading 4
 ##### Heading 5
-###### Heading 6</span></code></pre>
+###### Heading 6</code></pre>
                 </section>
                 <section aria-labelledby='sample_code' class='article__section'>
                     <h2 class='mb copy' id='sample_code'>Sample Code</h2>
                     <p>If your contribution contains code, please make sure that it follows the Google <a href='https://google.github.io/styleguide/javascriptguide.xml' rel='noopener' target='_blank'><span>style guide</span></a>. Otherwise, we will have to ask you to make changes, and that's no fun for anyone.</p>
                     <div class='mb'><p><strong>Inline Code</strong></p></div>
                     <p>To indicate a span of code, wrap it with backtick quotes (`). Unlike a pre-formatted code block, a code span indicates code within a normal paragraph. For example:</p>
-                    <pre class='notranslate mt'><code><span class="typ">Use</span><span class="pln"> the </span><span class="pun">`</span><span class="pln">printf</span><span class="pun">()`</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">.</span></code></pre>
+                    <pre class='notranslate mt'><code>Use the <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">printf()</span><span class="token template-punctuation string">`</span></span> <span class="token keyword">function</span><span class="token punctuation">.</span></code></pre>
                     <p>Will result in: Use the <code>printf()</code> function.</p>
                     <div class='mb'><p><strong>Code Block</strong></p></div>
                     <p>To produce a code block in Markdown, simply indent every line of the block by at least 4 spaces or 1 tab. For example, given this input:</p>
                     <p>Will result in:</p>
-                    <pre class='notranslate mt'><code><code><span class="typ">Here</span><span class="pln"> </span><span class="kwd">is</span><span class="pln"> an example of </span><span class="typ">AppleScript</span><span class="pun">:</span><span class="pln"><br><br>&nbsp; &nbsp; tell application </span><span class="str">"Foo"</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; beep<br>&nbsp; &nbsp; </span><span class="kwd">end</span><span class="pln"> tell<br></span></code></code></pre>
+                    <pre class='notranslate mt'><code>Here is an example <span class="token keyword">of</span> AppleScript<span class="token punctuation">:</span>
+
+    tell application <span class="token string">"Foo"</span>
+        beep
+    end tell
+</code></pre>
                     <p>Here is an example of AppleScript:</p>
-                    <pre class='notranslate mt'><code><span class="pln">tell application </span><span class="str">"Foo"</span><span class="pln"><br>&nbsp; &nbsp; beep<br></span><span class="kwd">end</span><span class="pln"> tell<br></span></code></pre>
+                    <pre class='notranslate mt'><code>tell application <span class="token string">"Foo"</span>
+    beep
+end tell</code></pre>
                     <p>Within a code block, ampersands (<code>&amp;</code>) and angle brackets (<code>&lt;</code> and <code>&gt;</code>) are automatically converted into HTML entities. This makes it very easy to include example HTML source code using Markdown -- just paste it and indent it, and Markdown will handle the hassle of encoding the ampersands and angle brackets.</p>
                     <blockquote class='aside warning'><p><strong>Warning:</strong> Wrapping code blocks in ``` is not supported on DevSite. DevSite will not automatically style these blocks and our integration tests will fail.</p></blockquote>
                     <div class='mb'><p><strong>Highlighting</strong></p></div>
                     <p>Use <code>&lt;strong&gt;</code> to call attention to content within a <code>&lt;pre&gt;</code> block. Doing so will lighten the surrounding content to emphasize the section highlighted by the <code>&lt;strong&gt;</code> block. For example:</p>
-                    <pre class='notranslate mt'><code><span class="com">// ...</span><span class="pln">
-</span><span class="com">// ...</span><span class="pln">
-</span><span class="com">// ...</span><span class="pln">
-</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun"><</span><span class="pln"> </span><span class="lit">10</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-    printf</span><span class="pun">(</span><span class="str">"Counting %d\n"</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">);</span><span class="pln">
+                    <pre class='notranslate mt'><code><span class="token comment">// ...</span>
+<span class="token comment">// ...</span>
+<span class="token comment">// ...</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator"><</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Counting %d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">%</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-        someFunc</span><span class="pun">(</span><span class="pln">i</span><span class="pun">);</span><span class="pln">
-    </span><span class="pun">}</span><span class="pln">
-</span><span class="pun">}</span><span class="pln">
-</span><span class="com">// ...</span><span class="pln">
-</span><span class="com">// ...</span><span class="pln">
-</span><span class="com">// ...</span></code></pre>
-                    <pre class='notranslate'><code><span class="tag">&lt;pre</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"prettyprint"</span><span class="tag">&gt;</span><span class="pln"><br>// ...<br>// ...<br>// ...<br>for (i = 0; i &lt; 10; i++) {<br>&nbsp; &nbsp; printf("Counting %d\n", i);<br><br>&nbsp; &nbsp; </span><span class="tag">&lt;strong&gt;</span><span class="pln">if (i % 3 == 0) {<br>&nbsp; &nbsp; &nbsp; &nbsp; someFunc(i);<br>&nbsp; &nbsp; }</span><span class="tag">&lt;/strong&gt;</span><span class="pln"><br>}<br>// ...<br>// ...<br>// ...<br></span><span class="tag">&lt;/pre&gt;</span><span class="pln"><br></span></code></pre>
-                    <div class='mb'><p><strong>Click to copy</strong></p></div>
-                    <p>Click to copy is automatically enabled for all code blocks.</p>
-                    <div class='mb'><p><strong>Special Case: Templates - {{}}</strong></p></div>
-                    <p>If you need to include templates in your code samples, be sure to escape them.</p>
-                    <p>For example:</p>
-                    <pre class='notranslate mt'><code><span class="tag">&lt;pre</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"prettyprint"</span><span class="tag">&gt;</span><span class="pln"><br>&amp;lt;polymer-media-query query="max-width:640px" queryMatches="&amp;#123;{isPhone}}"&gt;<br></span><span class="tag">&lt;/pre&gt;</span></code></pre>
-                    <p>If it's inline, you'll need to wrap it in a <code>&lt;code&gt;</code> block instead of backticks.</p>
-                    <pre class='notranslate mt'><code><span class="pun">*</span><span class="pln"> </span><span class="typ">Declarative</span><span class="pln"> two</span><span class="pun">-</span><span class="pln">way data</span><span class="pun">-</span><span class="pln">binding</span><span class="pun">:</span><span class="pln"> </span><span class="str">&lt;code&gt;</span><span class="pun">&lt;</span><span class="pln">input id</span><span class="pun">=</span><span class="str">"input"</span><span class="pln"> value</span><span class="pun">=</span><span class="str">"&amp;#123;{foo}}"</span><span class="pun">&gt;&lt;/</span><span class="pln">code</span><span class="pun">&gt;</span></code></pre>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">someFunc</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ...</span>
+<span class="token comment">// ...</span>
+<span class="token comment">// ...</span></code></pre>
+                    <pre class='notranslate'><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>prettyprint<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">// ...</span>
+<span class="token comment">// ...</span>
+<span class="token comment">// ...</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token punctuation">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Counting %d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">someFunc</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ...</span>
+<span class="token comment">// ...</span>
+<span class="token comment">// ...</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span></code></pre>
                 </section>
                 <section aria-labelledby='callouts' class='article__section'>
                     <h2 class='mb copy' id='callouts'>Callouts</h2>
@@ -256,13 +269,13 @@
                     <p>This scarsly known tag emulates <kbd>keyboard text</kbd>, which is usually styled like the <code>&lt;code&gt;</code> tag.</p>
                     <div class='mb'><p><strong>Preformatted Tag</strong></p></div>
                     <p>This tag styles large blocks of code.</p>
-                    <pre class='notranslate mt'><code><span class="pun">.</span><span class="pln">post</span><span class="pun">-</span><span class="pln">title </span><span class="pun">{</span><span class="pln">
- margin</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">5px</span><span class="pun">;</span><span class="pln">
- font</span><span class="pun">-</span><span class="pln">weight</span><span class="pun">:</span><span class="pln"> bold</span><span class="pun">;</span><span class="pln">
- font</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">38px</span><span class="pun">;</span><span class="pln">
- line</span><span class="pun">-</span><span class="pln">height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.2</span><span class="pun">;</span><span class="pln">
- </span><span class="kwd">and</span><span class="pln"> here</span><span class="str">'s a line of some really, really, really, really long text, just to see how the PRE tag handles it and to find out how it overflows;
-}</span></code></pre>
+                    <pre class='notranslate mt'><code><span class="token selector">.post-title</span> <span class="token punctuation">{</span>
+ <span class="token property">margin</span><span class="token punctuation">:</span> 0 0 5px<span class="token punctuation">;</span>
+ <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+ <span class="token property">font-size</span><span class="token punctuation">:</span> 38px<span class="token punctuation">;</span>
+ <span class="token property">line-height</span><span class="token punctuation">:</span> 1.2<span class="token punctuation">;</span>
+ and here's a line of some really<span class="token punctuation">,</span> really<span class="token punctuation">,</span> really<span class="token punctuation">,</span> really long text<span class="token punctuation">,</span> just to see how the PRE tag handles it and to find out how it overflows<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
                     <div class='mb'><p><strong>Quote Tag</strong></p></div>
                     <p><q>Developers, developers, developers...</q> - Steve Ballmer</p>
                     <div class='mb'><p><strong>Strong Tag</strong></p></div>
