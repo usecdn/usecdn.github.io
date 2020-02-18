@@ -23,7 +23,7 @@
     <link rel='apple-touch-icon' href='./img/apple-touch-icon.png'>
     <link rel='manifest' href='./manifest.json'>
     <link rel='stylesheet' href='./css/style.css'>
-    <script>(function(){function c(){document.documentElement.classList.add("dark");h.setAttribute("content","#131916");localStorage.setItem("theme","dark")}function d(){document.documentElement.classList.remove("dark");h.setAttribute("content","#ffffff");localStorage.removeItem("theme")}function e(){document.documentElement.classList.remove("js");document.documentElement.classList.add("js-loading")}var b=localStorage.getItem("theme"),h=document.querySelector('meta[name="theme-color"]'),l=window.matchMedia("(prefers-color-scheme: dark)");try{switch(b){case "dark":c();break;default:d()}}catch(a){throw new SyntaxError("There was a problem reading local data");}b=function(a){for(var f=window.location.search.substring(1).split("&"),g=0;g<f.length;g++){var k=f[g].split("=");if(k[0]==a)return k[1]}return!1}("theme");"dark"===b&&setTimeout(function(){return c()},0);"light"===b&&setTimeout(function(){return d()},0);l.addListener(function(a){a.matches?setTimeout(function(){return c()},0):setTimeout(function(){return d()},0)});window.parent.frames[0]!=window.self&&e();document.addEventListener("readystatechange",function(a){try{"interactive"===a.target.readyState?e():"complete"===a.target.readyState&&(document.documentElement.classList.add("js"),document.documentElement.classList.remove("js-loading"))}catch(f){throw new SyntaxError("The page not be loaded");}});window.addEventListener("beforeunload",e)})()</script>
+    <script>(function(){function c(){document.documentElement.classList.add("dark");h.setAttribute("content","#121212");localStorage.setItem("theme","dark")}function d(){document.documentElement.classList.remove("dark");h.setAttribute("content","#ffffff");localStorage.removeItem("theme")}function e(){document.documentElement.classList.remove("js");document.documentElement.classList.add("js-loading")}var b=localStorage.getItem("theme"),h=document.querySelector('meta[name="theme-color"]'),l=window.matchMedia("(prefers-color-scheme: dark)");try{switch(b){case "dark":c();break;default:d()}}catch(a){throw new SyntaxError("There was a problem reading local data");}b=function(a){for(var f=window.location.search.substring(1).split("&"),g=0;g<f.length;g++){var k=f[g].split("=");if(k[0]==a)return k[1]}return!1}("theme");"dark"===b&&setTimeout(function(){return c()},0);"light"===b&&setTimeout(function(){return d()},0);l.addListener(function(a){a.matches?setTimeout(function(){return c()},0):setTimeout(function(){return d()},0)});window.parent.frames[0]!=window.self&&e();document.addEventListener("readystatechange",function(a){try{"interactive"===a.target.readyState?e():"complete"===a.target.readyState&&(document.documentElement.classList.add("js"),document.documentElement.classList.remove("js-loading"))}catch(f){throw new SyntaxError("The page not be loaded");}});window.addEventListener("beforeunload",e)})()</script>
 </head>
 <body data-layout='index'>
     <a class='skip-to-content' href='#main'>Skip to main content</a>
@@ -86,9 +86,91 @@
                 <p class='section__subtitle'>Tough ideas, simple tutorials, the most comprehensive guide, and best practices for building experiences well and more.</p>
             </header>
             <div class='section__body'>
-                <section aria-labelledby='more-about-me' class='section__content'>
+                <section aria-labelledby='more-about-me' class='section__content section__center'>
                     <h2 class='section__title' id='more-about-me'>People say, if you don't know me then you don't love it. then recognize the figure behind this screen.</h2>
                     <div class='section__btn'><a class='section__btn_link' href='./410.html'>About me</a></div>
+                </section>
+                <section aria-labelledby='latest-stories' class='section__grid'>
+                    <div class='section__center'>
+                        <h2 class='section__title' id='latest-stories'>Latest stories</h2>
+                        <p class='section__subtitle'>See our latest news, updates, and stories.</p>
+                    </div>
+                    <div class='section__grid_list' role='list'>
+                        <div class='section__grid_item' id='article-1'>
+                            <div class='card'>
+                                <div class='card__header'>
+                                    <a class='card__link' href='./article.html' tabindex='-1'>
+                                        <mark class='card__label'>Leadership</mark>
+                                        <h3 class='card__title'>Insights from a Reluctant Leader</h3>
+                                        <p class='card__subtitle'>Why our current definition of leadership doesn’t match the rallying cry for diversity, equity, and inclusion</p>
+                                    </a>
+                                </div>
+                                <div class='card__posted'>
+                                    <div class='card__posted_image'>
+                                        <amp-img alt='Margaret Lee' data-src='./img/rsp-me.jpg' height='36' layout='responsive' src='./img/me.jpg' width='36'><noscript><img alt='Margaret Lee' data-src='./img/rsp-me.jpg' height='36' layout='responsive' src='./img/me.jpg' width='36'/></noscript></amp-img>
+                                    </div>
+                                    <div class='card__posted_info'>
+                                        <a class='card__posted_author' href='/'>Margaret Lee</a>
+                                        <time class='card__posted_date' datetime='2019-02-20T05:43:37+0000'>Feb 20, 2019</time>
+                                    </div>
+                                </div>
+                                <a class='card__link' href='./article.html'>
+                                    <figure class='card__figure'>
+                                        <amp-img alt='Insights from a Reluctant Leader' data-src='./img/rsp-art-fair.png' height='1200' layout='responsive' src='./img/art-fair.png' width='1600'><noscript><img alt='Insights from a Reluctant Leader' data-src='./img/rsp-art-fair.png' height='1200' layout='responsive' src='./img/art-fair.png' width='1600'/></noscript></amp-img>
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class='section__grid_item' id='article-2'>
+                            <div class='card'>
+                                <div class='card__header'>
+                                    <a class='card__link' href='./how.html' tabindex='-1'>
+                                        <h3 class='card__title'>How Human Interaction is Shaping the Future of Technology</h3>
+                                        <p class='card__subtitle'>In fact, if you think of human speech as having been around for 1 day, then talking computers have been around for just 1 millisecond.</p>
+                                    </a>
+                                </div>
+                                <div class='card__posted'>
+                                    <div class='card__posted_image'>
+                                        <amp-img alt='Hector Ouilhet' data-src='./img/rsp-me.jpg' height='36' layout='responsive' src='./img/me.jpg' width='36'><noscript><img alt='Hector Ouilhet' data-src='./img/rsp-me.jpg' height='36' layout='responsive' src='./img/me.jpg' width='36'/></noscript></amp-img>
+                                    </div>
+                                    <div class='card__posted_info'>
+                                        <a class='card__posted_author' href='/'>Hector Ouilhet</a>
+                                        <time class='card__posted_date' datetime='2019-02-20T05:43:37+0000'>Feb 20, 2019</time>
+                                    </div>
+                                </div>
+                                <a class='card__link' href='./how.html'>
+                                    <figure class='card__figure'>
+                                        <amp-img alt='Awkward exchanges with technology' data-src='./img/rsp-boathouse.png' height='600' layout='responsive' src='./img/boathouse.png' width='800'><noscript><img alt='Awkward exchanges with technology' height='600' loading='lazy' src='./img/boathouse.png' width='800'/></noscript></amp-img>
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class='section__grid_item' id='article-3'>
+                            <div class='card'>
+                                <div class='card__header'>
+                                    <a class='card__link' href='./css.html' tabindex='-1'>
+                                        <h3 class='card__title'>CSS Architecture for Modern JavaScript Applications</h3>
+                                        <p class='card__subtitle'>My attempt to modernise some learnings from CSS architecture and apply them in the context of modern JavaScript applications.</p>
+                                    </a>
+                                </div>
+                                <div class='card__posted'>
+                                    <div class='card__posted_image'>
+                                        <amp-img alt='Mike' data-src='./img/rsp-me.jpg' height='36' layout='responsive' src='./img/me.jpg' width='36'><noscript><img alt='Mike' data-src='./img/rsp-me.jpg' height='36' layout='responsive' src='./img/me.jpg' width='36'/></noscript></amp-img>
+                                    </div>
+                                    <div class='card__posted_info'>
+                                        <a class='card__posted_author' href='/'>Mike</a>
+                                        <time class='card__posted_date' datetime='2019-02-20T05:43:37+0000'>Feb 20, 2019</time>
+                                    </div>
+                                </div>
+                                <a class='card__link' href='./css.html'>
+                                    <figure class='card__figure'>
+                                        ><amp-img alt='Mike: CSS Architecture' data-src='./img/rsp-road-trip.png' height='600' layout='responsive' src='./img/road-trip.png' width='800'><noscript><img alt='Mike: CSS Architecture' height='600' loading='lazy' src='./img/road-trip.png' width='800'/></noscript></amp-img>
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='section__btn'><a class='section__btn_link' href='./search.html'>See more</a></div>
                 </section>
                 <ol>
                     <li><a href='./410.html'>410</a></li>
@@ -98,7 +180,6 @@
                     <li><a href='./style-guide.html'>Style Guide</a></li>
                     <li><a href='./dark.html'>prefers-color-scheme: Hello darkness, my old friend</a></li>
                     <li><a href='./template.html'>Blogger Template</a></li>
-                    <li><a href='./question.html'>Question</a></li>
                     <li><a href='./comments.html'>Comments</a></li>
                     <li><a href='./search.html'>Search</a></li>
                     <li><a href='./preview.html'><span>Preview</span></a></li>
